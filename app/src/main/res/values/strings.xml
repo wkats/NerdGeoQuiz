@@ -2,11 +2,17 @@
 <resources>
 
     <string name="app_name">NerdGeoQuiz</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="question_text">Constantinopla es la ciudd más grande
     de Turquía</string>
     <string name="true_button">Cierto</string>
     <string name="false_button">Falso</string>
-
+    <string name="correct_toast">¡Correcto!</string>
+    <string name="incorrect_toast">Incorrecto :(</string>
+    <string name="next_button">Siguiente</string>
+    <string name="question_oceans">El Oceano Pacífico es más grande que el Oceano Atlántico.</string>
+    <string name="question_mideast">El Canal de Suez conecta el Mar Rojo con el Océano Índico.</string>
+    <string name="question_africa">La fuente del Río Nilo está en Egipto.</string>
+    <string name="question_americas">El Río Amazonas es el más grande en América.</string>
+    <string name="question_asia">El Lago Baikal es el más viejo y profundo lago de agua dulce en el mundo</string>
 </resources>
