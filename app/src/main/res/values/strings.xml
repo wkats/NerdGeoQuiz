@@ -10,6 +10,7 @@
     <string name="correct_toast">¡Correcto!</string>
     <string name="incorrect_toast">Incorrecto :(</string>
     <string name="next_button">Siguiente</string>
+    <string name="previous_button">Anterior</string>
     <string name="question_oceans">El Oceano Pacífico es más grande que el Oceano Atlántico.</string>
     <string name="question_mideast">El Canal de Suez conecta el Mar Rojo con el Océano Índico.</string>
     <string name="question_africa">La fuente del Río Nilo está en Egipto.</string>

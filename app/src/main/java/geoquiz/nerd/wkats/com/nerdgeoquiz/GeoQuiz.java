@@ -14,6 +14,7 @@ public class GeoQuiz extends ActionBarActivity {
 
     private Button mBtnFalse, mBtnTrue; //Instancia de los botones de Cierto y Falso
     private Button mBtnNext; //Instancia del botón Siguiente
+    private Button mBtnPrev; //Instancia del botón Anterior
     private TextView mQuestionTextView;
     private TrueFalse[] mQuestionBank = new TrueFalse[] {   //Banco de preguntas TrueFalse
             new TrueFalse(R.string.question_oceans, true),
@@ -29,7 +30,13 @@ public class GeoQuiz extends ActionBarActivity {
         int question = mQuestionBank[mCurrentIndex].getQuestion();
         mQuestionTextView.setText(question);
     }
-
+    private void updateQuestionBack() {
+        mCurrentIndex-=1;
+        if(mCurrentIndex<0)
+            mCurrentIndex=mQuestionBank.length-1;
+        int question = mQuestionBank[mCurrentIndex].getQuestion();
+        mQuestionTextView.setText(question);
+    }
     private void checkAnswer(boolean userPressedTrue) {
         boolean answerIsTrue = mQuestionBank[mCurrentIndex].isTrueQuestion();
         int messageResId = 0;
@@ -41,8 +48,6 @@ public class GeoQuiz extends ActionBarActivity {
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT)
                 .show();
     }
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +56,7 @@ public class GeoQuiz extends ActionBarActivity {
         mBtnFalse = (Button)findViewById(R.id.false_button);
         mBtnTrue = (Button)findViewById(R.id.true_button);
         mBtnNext = (Button)findViewById(R.id.next_button);
+        mBtnPrev = (Button)findViewById(R.id.previous_button);
         mBtnTrue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,7 +69,19 @@ public class GeoQuiz extends ActionBarActivity {
                 checkAnswer(false);
             }
         });
+        mBtnPrev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View _view) {
+                updateQuestionBack();
+            }
+        });
         mBtnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View _view) {
+                updateQuestion();
+            }
+        });
+        mQuestionTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View _view) {
                 updateQuestion();
@@ -72,15 +90,12 @@ public class GeoQuiz extends ActionBarActivity {
     updateQuestion();
 
     }
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_geo_quiz, menu);
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
