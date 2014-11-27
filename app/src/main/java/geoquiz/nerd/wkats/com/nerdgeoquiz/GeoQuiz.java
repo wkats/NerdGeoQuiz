@@ -30,6 +30,18 @@ public class GeoQuiz extends ActionBarActivity {
         mQuestionTextView.setText(question);
     }
 
+    private void checkAnswer(boolean userPressedTrue) {
+        boolean answerIsTrue = mQuestionBank[mCurrentIndex].isTrueQuestion();
+        int messageResId = 0;
+        if (userPressedTrue == answerIsTrue) {
+            messageResId = R.string.correct_toast;
+        } else {
+            messageResId = R.string.incorrect_toast;
+        }
+        Toast.makeText(this, messageResId, Toast.LENGTH_SHORT)
+                .show();
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +54,13 @@ public class GeoQuiz extends ActionBarActivity {
         mBtnTrue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(GeoQuiz.this, R.string.incorrect_toast, Toast.LENGTH_SHORT).show();
+                checkAnswer(true);
             }
         });
         mBtnFalse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(GeoQuiz.this, R.string.correct_toast, Toast.LENGTH_SHORT).show();
+                checkAnswer(false);
             }
         });
         mBtnNext.setOnClickListener(new View.OnClickListener() {
@@ -75,12 +87,10 @@ public class GeoQuiz extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

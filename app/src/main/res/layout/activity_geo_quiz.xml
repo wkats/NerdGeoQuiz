@@ -36,6 +36,8 @@
          android:layout_height="wrap_content"
          android:id="@+id/next_button"
          android:text="@string/next_button"
+         android:drawableRight="@drawable/right_arrow"
+         android:drawablePadding="4dp"
          />
 
 
